@@ -1,0 +1,32 @@
+import 'dart:async';
+
+import 'package:api_call_with_clean_architecture/features/home/presentation/view/home_screen.dart';
+import 'package:flutter/material.dart';
+import 'di/get_it.dart' as get_it;
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  mainFunction();
+
+  runApp(const MyApp());
+}
+
+Future<void> mainFunction() async {
+  unawaited(get_it.init());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Api Demo',
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
